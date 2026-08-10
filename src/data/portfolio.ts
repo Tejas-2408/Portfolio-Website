@@ -11,7 +11,7 @@ export const profile = {
     "Helping startups, professionals and local businesses build fast, responsive websites, automate workflows and integrate powerful APIs.",
   availability: "Available for freelance projects",
   location: "Haryana, India",
-  email: "tejasbansal6065@gmail.com",
+  email: "creative@tjcr.in",
   about: [
     "I'm a freelance website developer and API integration specialist. I build modern, responsive websites and web apps that load fast, rank well and turn visitors into customers.",
     "Beyond the frontend, I integrate REST APIs, AI APIs, payment gateways and third-party services, and build automation tools that remove repetitive work from a business's day.",
@@ -33,6 +33,7 @@ export const navItems = [
   { label: "Services", href: "#services" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Work", href: "#showcase" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -176,6 +177,20 @@ export const serviceOptions = [
   "Technical Consulting",
   "Something else",
 ];
+
+export const freelanceWork = [
+  {
+    client: "tjcr.in",
+    title: "Personal Portfolio & Business Site",
+    description: "This site — a fast, SEO-ready portfolio for freelance dev work.",
+    url: "https://tjcr.in",
+    tags: ["React", "Tailwind CSS", "TanStack Start"],
+  },
+];
+
+export const testimonialsConfig = {
+  testimonialsSheetCsvUrl: "",   // ← paste your published Google Sheets CSV link here
+};
 
 export const faqs = [
   {

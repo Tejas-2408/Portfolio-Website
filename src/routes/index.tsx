@@ -10,6 +10,7 @@ import { FaqSection } from "@/components/portfolio/FaqSection";
 import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 import { profile, links, services, faqs } from "@/data/portfolio";
+import { Showcase } from "@/components/portfolio/Showcase";
 
 const title = "Freelance Website Developer & API Integration Specialist | Tejas Bansal";
 const description =
@@ -136,6 +137,10 @@ function Index() {
         <Section id="projects" eyebrow="Projects" title="Featured work">
           <Projects />
         </Section>
+
+        <Section id="showcase" eyebrow="Freelance work" title="Live sites & client love">
+  <Showcase />
+</Section>
 
         <Section id="experience" eyebrow="Experience" title="Enterprise background">
           <Experience />
