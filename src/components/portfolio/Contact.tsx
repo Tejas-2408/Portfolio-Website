@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Mail, Loader2, CheckCircle2, MapPin } from "lucide-react";
+import { Mail, Loader2, CheckCircle2, MapPin, Copy, Check } from "lucide-react";
+import { toast } from "sonner";
 import { profile, serviceOptions } from "@/data/portfolio";
 import { SocialLinks } from "./SocialLinks";
 
@@ -7,6 +8,18 @@ type Status = "idle" | "sending" | "sent" | "error";
 
 export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      toast.success("Email copied to clipboard!", { description: profile.email });
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      toast.info(`Email: ${profile.email}`);
+    }
+  };
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -21,8 +34,12 @@ export function Contact() {
       if (!response.ok) throw new Error("Request failed");
       form.reset();
       setStatus("sent");
+      toast.success("Message sent successfully!", {
+        description: "Thanks for reaching out! I will respond within 24 hours.",
+      });
     } catch {
       setStatus("error");
+      toast.error("Could not send message. Please write to creative@tjcr.in directly.");
     }
   }
 
@@ -49,7 +66,7 @@ export function Contact() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
-            <input type="hidden" name="_subject" value="New enquiry from tjcr.in" />
+            <input type="hidden" name="_subject" value="New enquiry from tjcr.in (Tejas Creatives)" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="text" name="_honey" className="hidden" tabIndex={-1} aria-hidden="true" />
 
@@ -133,10 +150,14 @@ export function Contact() {
       <div className="space-y-5">
         <div className="rounded-2xl border border-border bg-card p-7 shadow-card">
           <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-primary">
-            Reach me directly
+            Reach Tejas Directly
           </h3>
-          <ul className="mt-4 space-y-3 text-sm">
-            <li>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Tejas Creatives (TJCR) • Available for freelance projects worldwide.
+          </p>
+
+          <ul className="mt-5 space-y-3 text-sm">
+            <li className="flex items-center justify-between gap-2">
               <a
                 href={`mailto:${profile.email}`}
                 className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
@@ -144,13 +165,26 @@ export function Contact() {
                 <Mail size={16} aria-hidden="true" />
                 {profile.email}
               </a>
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                aria-label="Copy email"
+                className="rounded-lg border border-border p-1.5 text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary"
+              >
+                {copied ? (
+                  <Check size={14} className="text-emerald-500" aria-hidden="true" />
+                ) : (
+                  <Copy size={14} aria-hidden="true" />
+                )}
+              </button>
             </li>
             <li className="inline-flex items-center gap-2 text-muted-foreground">
               <MapPin size={16} aria-hidden="true" />
               {profile.location}
             </li>
           </ul>
-          <div className="mt-5 flex flex-wrap gap-3">
+
+          <div className="mt-6 flex flex-wrap gap-3">
             <SocialLinks variant="outline" />
           </div>
         </div>

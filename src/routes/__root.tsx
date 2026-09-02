@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -77,11 +78,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Freelance Website Developer & API Integration Specialist | Tejas Bansal" },
-      { name: "author", content: "Tejas Bansal" },
+      { title: "Tejas Bansal | TJCR (Tejas Creatives) — Freelance Web Developer & API Specialist" },
+      { name: "author", content: "Tejas Bansal (Tejas Creatives / TJCR)" },
+      {
+        name: "description",
+        content:
+          "Official portfolio of Tejas Bansal, founder of Tejas Creatives (TJCR). Freelance website developer, API integration specialist, and AI automation builder in Haryana, India.",
+      },
+      {
+        name: "keywords",
+        content:
+          "tjcr, tejas creatives, tejas bansal, tejas, freelance website developer, API integration specialist, React developer India, TJCR portfolio, web developer Haryana, AI automation developer",
+      },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Tejas Bansal" },
+      { property: "og:site_name", content: "TJCR — Tejas Creatives" },
+      { property: "og:title", content: "Tejas Bansal | TJCR (Tejas Creatives) — Web Developer & API Specialist" },
+      {
+        property: "og:description",
+        content:
+          "Official portfolio of Tejas Bansal (Tejas Creatives / TJCR). Fast, responsive websites, REST API integrations, and AI automations for businesses and startups.",
+      },
+      { property: "og:image", content: "https://tjcr.in/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Tejas Bansal | TJCR (Tejas Creatives)" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Tejas Bansal | TJCR (Tejas Creatives)" },
+      {
+        name: "twitter:description",
+        content:
+          "Freelance website developer, API integration specialist, and AI automation builder at Tejas Creatives (TJCR).",
+      },
+      { name: "twitter:image", content: "https://tjcr.in/og-image.png" },
     ],
     links: [
       {
@@ -94,7 +122,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.png", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -124,6 +153,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <Toaster richColors position="top-right" />
     </QueryClientProvider>
   );
 }

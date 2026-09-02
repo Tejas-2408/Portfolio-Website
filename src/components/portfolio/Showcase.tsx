@@ -70,11 +70,6 @@ function Testimonials() {
 
   useEffect(() => {
     const csvUrl = testimonialsConfig.testimonialsSheetCsvUrl;
-    if (!csvUrl) {
-      setState("empty");
-      return;
-    }
-
     let cancelled = false;
     setState("loading");
 
@@ -95,12 +90,28 @@ function Testimonials() {
 
   return (
     <div>
-      <h3 className="text-lg font-semibold tracking-tight">Client testimonials</h3>
-      <p className="mt-1 text-sm text-muted-foreground">
-        Synced live from a Google Sheet — every new review shows up here automatically.
-      </p>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h3 className="text-lg font-semibold tracking-tight">Client testimonials</h3>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Authentic feedback from founders and engineering teams.
+          </p>
+        </div>
 
-      <div className="mt-5">
+        {testimonialsConfig.reviewFormUrl && (
+          <a
+            href={testimonialsConfig.reviewFormUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-3.5 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/60 hover:text-primary"
+          >
+            <Star size={13} className="text-primary" aria-hidden="true" />
+            Submit a client review
+          </a>
+        )}
+      </div>
+
+      <div className="mt-6">
         {state === "loading" && (
           <div className="flex items-center gap-2 rounded-2xl border border-border bg-card p-6 text-sm text-muted-foreground">
             <Loader2 size={16} className="animate-spin" aria-hidden="true" />
@@ -110,54 +121,59 @@ function Testimonials() {
 
         {state === "error" && (
           <div className="rounded-2xl border border-border bg-card p-6 text-sm text-muted-foreground">
-            Couldn't load testimonials right now — please check back soon.
+            Couldn't load external testimonials right now — please check back soon.
           </div>
         )}
 
         {state === "empty" && (
           <div className="rounded-2xl border border-dashed border-border bg-card p-6 text-sm text-muted-foreground">
-            No testimonials yet. Connect a Google Sheet in{" "}
-            <code className="rounded bg-secondary px-1.5 py-0.5 text-xs">
-              src/data/portfolio.ts
-            </code>{" "}
-            to display client reviews here — see README.md for setup steps.
+            No testimonials found yet. Share your experience with Tejas Creatives by submitting a review!
           </div>
         )}
 
         {state === "loaded" && (
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial, index) => (
               <figure
                 key={`${testimonial.name}-${index}`}
-                className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-card"
+                className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-primary/40"
               >
-                <Quote size={20} className="text-primary/60" aria-hidden="true" />
-
-                <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {testimonial.quote}
-                </blockquote>
-
-                {testimonial.rating && (
-                  <div
-                    className="mt-4 flex gap-0.5"
-                    aria-label={`${testimonial.rating} out of 5 stars`}
-                  >
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        size={14}
-                        className={
-                          i < testimonial.rating!
-                            ? "fill-primary text-primary"
-                            : "text-muted-foreground/30"
-                        }
-                        aria-hidden="true"
-                      />
-                    ))}
+                <div>
+                  <div className="flex items-center justify-between">
+                    <Quote size={20} className="text-primary/60" aria-hidden="true" />
+                    {testimonial.rating && (
+                      <div
+                        className="flex gap-0.5"
+                        aria-label={`${testimonial.rating} out of 5 stars`}
+                      >
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            size={13}
+                            className={
+                              i < testimonial.rating!
+                                ? "fill-primary text-primary"
+                                : "text-muted-foreground/30"
+                            }
+                            aria-hidden="true"
+                          />
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
 
-                <figcaption className="mt-4 flex items-center gap-3">
+                  <blockquote className="mt-3.5 text-sm leading-relaxed text-muted-foreground">
+                    "{testimonial.quote}"
+                  </blockquote>
+
+                  {testimonial.projectName && (
+                    <div className="mt-3 inline-block rounded-md bg-secondary/80 px-2 py-0.5 text-[11px] font-medium text-secondary-foreground">
+                      {testimonial.projectName}
+                    </div>
+                  )}
+                </div>
+
+                <figcaption className="mt-5 flex items-center gap-3 border-t border-border/40 pt-4">
                   {testimonial.avatarUrl ? (
                     <img
                       src={testimonial.avatarUrl}
@@ -170,10 +186,10 @@ function Testimonials() {
                       {testimonial.name.charAt(0).toUpperCase()}
                     </div>
                   )}
-                  <div>
-                    <p className="text-sm font-medium">{testimonial.name}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium">{testimonial.name}</p>
                     {(testimonial.role || testimonial.company) && (
-                      <p className="text-xs text-muted-foreground">
+                      <p className="truncate text-xs text-muted-foreground">
                         {[testimonial.role, testimonial.company].filter(Boolean).join(" · ")}
                       </p>
                     )}

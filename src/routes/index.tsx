@@ -9,12 +9,12 @@ import { Experience } from "@/components/portfolio/Experience";
 import { FaqSection } from "@/components/portfolio/FaqSection";
 import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
-import { profile, links, services, faqs } from "@/data/portfolio";
+import { brand, profile, links, services, faqs } from "@/data/portfolio";
 import { Showcase } from "@/components/portfolio/Showcase";
 
-const title = "Freelance Website Developer & API Integration Specialist | Tejas Bansal";
+const title = "Tejas Bansal | TJCR (Tejas Creatives) — Freelance Web Developer & API Specialist";
 const description =
-  "Tejas Bansal — freelance website developer and API integration specialist in Haryana, India. React websites, AI automation, REST API integration and SEO for startups and local businesses.";
+  "Official website of Tejas Creatives (TJCR) by Tejas Bansal — freelance website developer, API integration specialist, and AI automation builder in Haryana, India. React websites, custom APIs, and scalable automation.";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -25,17 +25,20 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "freelance website developer, API integration specialist, React developer, frontend developer, business website developer, website developer India, website developer Haryana, website freelancer, React freelancer, SEO website developer, AI automation developer",
+          "tjcr, tejas creatives, tejas bansal, tejas, freelance website developer, API integration specialist, React developer, frontend developer, business website developer, website developer India, website developer Haryana, website freelancer, React freelancer, SEO website developer, AI automation developer, TJCR portfolio",
       },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://tjcr.in/" },
+      { property: "og:site_name", content: "TJCR — Tejas Creatives" },
+      { property: "og:image", content: "https://tjcr.in/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "twitter:image", content: "https://tjcr.in/og-image.png" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://tjcr.in/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -43,21 +46,52 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@graph": [
             {
-              "@type": "ProfessionalService",
-              "@id": `${links.siteUrl}/#business`,
-              name: `${profile.name} — Freelance Website Developer`,
-              description,
-              url: links.siteUrl,
+              "@type": "Person",
+              "@id": `${links.siteUrl}/#person`,
+              name: "Tejas Bansal",
+              alternateName: ["Tejas", "TJCR", "Tejas Creatives"],
+              jobTitle: "Freelance Website Developer & API Specialist",
+              worksFor: {
+                "@type": "Organization",
+                name: "Sprinklr",
+              },
               email: profile.email,
-              areaServed: ["India", "Worldwide"],
+              url: links.siteUrl,
               sameAs: [links.github, links.linkedin, links.leetcode],
+              description:
+                "Tejas Bansal is a freelance website developer and API specialist, and founder of Tejas Creatives (TJCR).",
             },
             {
               "@type": "Organization",
               "@id": `${links.siteUrl}/#organization`,
-              name: profile.name,
+              name: brand.name,
+              alternateName: brand.shortName,
+              legalName: brand.legalName,
+              url: links.siteUrl,
+              logo: `${links.siteUrl}/favicon.png`,
+              founder: { "@id": `${links.siteUrl}/#person` },
+              email: profile.email,
+              sameAs: [links.github, links.linkedin, links.leetcode],
+            },
+            {
+              "@type": "WebSite",
+              "@id": `${links.siteUrl}/#website`,
+              name: `${brand.shortName} — ${brand.name}`,
+              alternateName: "Tejas Bansal Portfolio",
+              url: links.siteUrl,
+              publisher: { "@id": `${links.siteUrl}/#organization` },
+            },
+            {
+              "@type": "ProfessionalService",
+              "@id": `${links.siteUrl}/#business`,
+              name: `${profile.name} (${brand.name} / ${brand.shortName})`,
+              alternateName: [brand.shortName, brand.name, profile.name],
+              description,
               url: links.siteUrl,
               email: profile.email,
+              founder: { "@id": `${links.siteUrl}/#person` },
+              areaServed: ["India", "Worldwide"],
+              priceRange: "$$",
               sameAs: [links.github, links.linkedin, links.leetcode],
             },
             ...services.map((service) => ({
@@ -99,6 +133,12 @@ export const Route = createFileRoute("/")({
                 {
                   "@type": "ListItem",
                   position: 4,
+                  name: "Reviews & Showcase",
+                  item: `${links.siteUrl}/#showcase`,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 5,
                   name: "Contact",
                   item: `${links.siteUrl}/#contact`,
                 },
@@ -118,7 +158,7 @@ function Index() {
       <main>
         <Hero />
 
-        <Section id="about" eyebrow="About" title="A developer who builds for business outcomes">
+        <Section id="about" eyebrow="About Tejas Creatives" title="A developer who builds for business outcomes">
           <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
             {profile.about.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -134,13 +174,13 @@ function Index() {
           <Skills />
         </Section>
 
-        <Section id="projects" eyebrow="Projects" title="Featured work">
+        <Section id="projects" eyebrow="Featured Work" title="Projects & Client Delivery">
           <Projects />
         </Section>
 
-        <Section id="showcase" eyebrow="Freelance work" title="Live sites & client love">
-  <Showcase />
-</Section>
+        <Section id="showcase" eyebrow="Client Reviews & Work" title="Live Sites & Client Testimonials">
+          <Showcase />
+        </Section>
 
         <Section id="experience" eyebrow="Experience" title="Enterprise background">
           <Experience />
