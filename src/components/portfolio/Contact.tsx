@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Mail, Loader2, CheckCircle2, MapPin, Copy, Check } from "lucide-react";
+import { Mail, Loader2, CheckCircle2, MapPin, Copy, Check, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
-import { profile, serviceOptions } from "@/data/portfolio";
+import { profile, serviceOptions, links } from "@/data/portfolio";
 import { SocialLinks } from "./SocialLinks";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -78,7 +78,7 @@ export function Contact() {
             </div>
             <div>
               <label htmlFor="company" className="mb-1.5 block text-xs font-medium">
-                Company
+                Company / Organization
               </label>
               <input id="company" name="company" maxLength={100} className={fieldClass} />
             </div>
@@ -101,7 +101,7 @@ export function Contact() {
               </label>
               <select id="service" name="service" required className={fieldClass} defaultValue="">
                 <option value="" disabled>
-                  Select a service
+                  Select a project type
                 </option>
                 {serviceOptions.map((option) => (
                   <option key={option} value={option}>
@@ -112,7 +112,7 @@ export function Contact() {
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="message" className="mb-1.5 block text-xs font-medium">
-                Message
+                Project Scope / Message
               </label>
               <textarea
                 id="message"
@@ -120,6 +120,7 @@ export function Contact() {
                 required
                 rows={5}
                 maxLength={2000}
+                placeholder="Briefly describe your requirements, timeline, and reference websites..."
                 className={fieldClass}
               />
             </div>
@@ -140,7 +141,7 @@ export function Contact() {
                 {status === "sending" && (
                   <Loader2 size={16} className="animate-spin" aria-hidden="true" />
                 )}
-                {status === "sending" ? "Sending..." : "Send message"}
+                {status === "sending" ? "Sending..." : "Send Project Enquiry"}
               </button>
             </div>
           </form>
@@ -150,7 +151,7 @@ export function Contact() {
       <div className="space-y-5">
         <div className="rounded-2xl border border-border bg-card p-7 shadow-card">
           <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-primary">
-            Reach Tejas Directly
+            Direct &amp; Platform Inquiries
           </h3>
           <p className="mt-1 text-xs text-muted-foreground">
             Tejas Creatives (TJCR) • Available for freelance projects worldwide.
@@ -183,6 +184,20 @@ export function Contact() {
               {profile.location}
             </li>
           </ul>
+
+          {links.fiverr && (
+            <div className="mt-5 pt-5 border-t border-border/50">
+              <a
+                href={links.fiverr}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-3.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white transition-colors"
+              >
+                <span>Prefer Fiverr Escrow &amp; Buyer Protection?</span>
+                <ExternalLink size={14} />
+              </a>
+            </div>
+          )}
 
           <div className="mt-6 flex flex-wrap gap-3">
             <SocialLinks variant="outline" />

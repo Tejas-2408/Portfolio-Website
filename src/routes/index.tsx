@@ -12,9 +12,9 @@ import { Footer } from "@/components/portfolio/Footer";
 import { brand, profile, links, services, faqs } from "@/data/portfolio";
 import { Showcase } from "@/components/portfolio/Showcase";
 
-const title = "Tejas Bansal | TJCR (Tejas Creatives) — Freelance Web Developer & API Specialist";
+const title = "Tejas Bansal | Freelance Web Developer, E-Commerce & AI Specialist — TJCR";
 const description =
-  "Official website of Tejas Creatives (TJCR) by Tejas Bansal — freelance website developer, API integration specialist, and AI automation builder in Haryana, India. React websites, custom APIs, and scalable automation.";
+  "Official website of Tejas Bansal (Tejas Creatives / TJCR) — freelance developer for static corporate websites, e-commerce stores, and AI tools. Available on Fiverr & direct hire with 3–7 day delivery.";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "tjcr, tejas creatives, tejas bansal, tejas, freelance website developer, API integration specialist, React developer, frontend developer, business website developer, website developer India, website developer Haryana, website freelancer, React freelancer, SEO website developer, AI automation developer, TJCR portfolio",
+          "tjcr, tejas creatives, tejas bansal, tejas, freelance website developer, fiverr web developer, e-commerce developer, static website developer, React developer India, API integration specialist, Chrome extension developer, AI automation builder, AKPS associates website, Amritsaar Gold developer",
       },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
@@ -57,9 +57,9 @@ export const Route = createFileRoute("/")({
               },
               email: profile.email,
               url: links.siteUrl,
-              sameAs: [links.github, links.linkedin, links.leetcode],
+              sameAs: [links.github, links.linkedin, links.leetcode, links.fiverr].filter(Boolean),
               description:
-                "Tejas Bansal is a freelance website developer and API specialist, and founder of Tejas Creatives (TJCR).",
+                "Tejas Bansal is a freelance website developer, e-commerce builder, and founder of Tejas Creatives (TJCR).",
             },
             {
               "@type": "Organization",
@@ -71,7 +71,7 @@ export const Route = createFileRoute("/")({
               logo: `${links.siteUrl}/favicon.png`,
               founder: { "@id": `${links.siteUrl}/#person` },
               email: profile.email,
-              sameAs: [links.github, links.linkedin, links.leetcode],
+              sameAs: [links.github, links.linkedin, links.leetcode, links.fiverr].filter(Boolean),
             },
             {
               "@type": "WebSite",
@@ -92,7 +92,7 @@ export const Route = createFileRoute("/")({
               founder: { "@id": `${links.siteUrl}/#person` },
               areaServed: ["India", "Worldwide"],
               priceRange: "$$",
-              sameAs: [links.github, links.linkedin, links.leetcode],
+              sameAs: [links.github, links.linkedin, links.leetcode, links.fiverr].filter(Boolean),
             },
             ...services.map((service) => ({
               "@type": "Service",
@@ -121,19 +121,19 @@ export const Route = createFileRoute("/")({
                 {
                   "@type": "ListItem",
                   position: 2,
+                  name: "Client Work & Projects",
+                  item: `${links.siteUrl}/#projects`,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
                   name: "Services",
                   item: `${links.siteUrl}/#services`,
                 },
                 {
                   "@type": "ListItem",
-                  position: 3,
-                  name: "Projects",
-                  item: `${links.siteUrl}/#projects`,
-                },
-                {
-                  "@type": "ListItem",
                   position: 4,
-                  name: "Reviews & Showcase",
+                  name: "Reviews & Testimonials",
                   item: `${links.siteUrl}/#showcase`,
                 },
                 {
@@ -158,7 +158,36 @@ function Index() {
       <main>
         <Hero />
 
-        <Section id="about" eyebrow="About Tejas Creatives" title="A developer who builds for business outcomes">
+        {/* Featured Projects with Dual Tabs: Client Work & Live Products */}
+        <Section
+          id="projects"
+          eyebrow="Portfolio & Delivery"
+          title="Delivered Client Sites & Live Products"
+        >
+          <Projects />
+        </Section>
+
+        {/* Freelance Services Offered */}
+        <Section id="services" eyebrow="Freelance Services" title="What I Build for Clients">
+          <Services />
+        </Section>
+
+        {/* Client Testimonials Showcase */}
+        <Section
+          id="showcase"
+          eyebrow="Social Proof & Feedback"
+          title="Verified Client Reviews & Deployments"
+        >
+          <Showcase />
+        </Section>
+
+        {/* Tech Stack & Core Competencies */}
+        <Section id="skills" eyebrow="Technical Skills" title="Tech I Work With">
+          <Skills />
+        </Section>
+
+        {/* About Tejas Bansal & TJCR */}
+        <Section id="about" eyebrow="About Tejas" title="A developer who builds for business outcomes">
           <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
             {profile.about.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -166,31 +195,18 @@ function Index() {
           </div>
         </Section>
 
-        <Section id="services" eyebrow="What I do" title="Services">
-          <Services />
-        </Section>
-
-        <Section id="skills" eyebrow="Skills" title="Tech I work with">
-          <Skills />
-        </Section>
-
-        <Section id="projects" eyebrow="Featured Work" title="Projects & Client Delivery">
-          <Projects />
-        </Section>
-
-        <Section id="showcase" eyebrow="Client Reviews & Work" title="Live Sites & Client Testimonials">
-          <Showcase />
-        </Section>
-
-        <Section id="experience" eyebrow="Experience" title="Enterprise background">
+        {/* Enterprise Experience */}
+        <Section id="experience" eyebrow="Enterprise Background" title="Engineering Experience">
           <Experience />
         </Section>
 
-        <Section id="faq" eyebrow="FAQ" title="Common questions">
+        {/* FAQ */}
+        <Section id="faq" eyebrow="FAQ" title="Freelancing & Process Questions">
           <FaqSection />
         </Section>
 
-        <Section id="contact" eyebrow="Contact" title="Let's build something">
+        {/* Contact & Hire CTA */}
+        <Section id="contact" eyebrow="Hire Me" title="Let's build something extraordinary">
           <Contact />
         </Section>
       </main>

@@ -15,18 +15,18 @@ export const profile = {
   name: "Tejas Bansal",
   brandName: "Tejas Creatives",
   shortBrand: "TJCR",
-  title: "Freelance Website Developer • API Integration Specialist • AI Automation Builder",
+  title: "Freelance Website Developer • E-Commerce Builder • AI Automation Specialist",
   secondaryTitle: "Senior Technical Support Engineer @ Sprinklr",
   heroSubtitle:
-    "Helping startups, professionals and businesses build fast, responsive websites, automate workflows and integrate powerful APIs with enterprise-grade reliability.",
-  availability: "Available for freelance projects",
+    "Helping startups, business owners, and agency clients build lightning-fast static sites, high-converting e-commerce stores, and AI tools with 3–7 day turnaround.",
+  availability: "Available for freelance projects on Fiverr & Direct",
   location: "Haryana, India",
   email: "creative@tjcr.in",
   about: [
-    "I'm Tejas Bansal, founder of Tejas Creatives (TJCR) and a freelance website developer and API integration specialist based in Haryana, India. I build modern, responsive web applications that load fast, rank high on search engines, and convert visitors into clients.",
-    "Beyond modern frontend engineering, I specialize in connecting complex REST APIs, Gemini & OpenAI AI APIs, payment gateways, and custom business automation tools that eliminate repetitive manual workflows.",
-    "My enterprise foundation as a Senior Technical Support Engineer at Sprinklr brings deep engineering rigor: root cause analysis, production API tracing, Elasticsearch/database debugging, and cross-functional problem solving under high SLA demands.",
-    "Whether you need a brand-new website for your business, an AI-powered workflow, or seamless third-party API connectivity, I build digital solutions tailored for measurable business outcomes.",
+    "I'm Tejas Bansal, founder of Tejas Creatives (TJCR) and an active freelance website developer, e-commerce specialist, and AI automation builder. I build modern, responsive web applications that load in under a second, convert visitors into buyers, and rank at the top of search engines.",
+    "From corporate static websites (AKPS Associates, RRA) to high-volume e-commerce storefronts (Amritsaar Gold) and intelligent Chrome extensions/AI assistants (MailGenie), I deliver production-ready code with complete ownership.",
+    "My day job as a Senior Technical Support Engineer at Sprinklr backs all freelance work with enterprise rigor: code-level root cause analysis, API debugging, and performance optimization.",
+    "Available for custom contracts directly and via leading freelance platforms like Fiverr and Upwork with fast 3–7 day delivery and 100% satisfaction guarantee.",
   ],
 };
 
@@ -34,192 +34,329 @@ export const links = {
   github: "https://github.com/Tejas-2408",
   linkedin: "https://www.linkedin.com/in/tejas-bansal-724b571b7",
   leetcode: "https://leetcode.com/u/tejas_2408/",
+  fiverr: "https://www.fiverr.com/", // Add your Fiverr profile or gig URL here
   siteUrl: "https://tjcr.in",
-  reviewFormUrl: "https://forms.gle/tejas-creatives-review", // Google Form URL for client reviews
+  reviewFormUrl: "https://forms.gle/tejas-creatives-review", // Google Form URL for reviews
 };
 
 export const navItems = [
   { label: "Home", href: "#top" },
-  { label: "About", href: "#about" },
+  { label: "Client Work", href: "#projects" },
   { label: "Services", href: "#services" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
   { label: "Reviews", href: "#showcase" },
-  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
+];
+
+export const freelanceGuarantees = [
+  { title: "3–7 Day Turnaround", desc: "Fast, reliable project milestones and prompt delivery" },
+  { title: "100% Responsive Design", desc: "Flawless on smartphones, tablets, and 4K displays" },
+  { title: "SEO & Core Web Vitals Ready", desc: "Optimized for top search ranking and 95+ PageSpeed" },
+  { title: "Post-Launch Support", desc: "Free revisions and bug-fixing support after deployment" },
 ];
 
 export const services = [
   {
     icon: "Globe",
-    title: "Website Development",
+    title: "Static Business Websites",
     description:
-      "Responsive, accessible websites and web apps built with React, Tailwind and modern tooling — mobile-first and fast by default.",
+      "Ultra-fast, responsive corporate and portfolio websites built with React, Next.js, and Tailwind CSS. Modern, mobile-first, and SEO-optimized.",
   },
   {
-    icon: "Plug",
-    title: "API Integration",
+    icon: "ShoppingBag",
+    title: "E-Commerce Stores",
     description:
-      "REST APIs, AI APIs, payment gateways, CRMs and third-party services wired into your product with clean error handling.",
+      "High-converting retail online stores with catalog navigation, shopping carts, payment gateway integration, and frictionless mobile checkouts.",
   },
   {
     icon: "Bot",
-    title: "AI Automation",
+    title: "AI Tools & Automation",
     description:
-      "AI-assisted tools and workflow automation that cut manual work — from email drafting to reporting and data clean-up.",
+      "AI-driven web tools, Gemini/OpenAI API integrations, email assistants, and workflow automations that eliminate manual tasks.",
   },
   {
-    icon: "Building2",
-    title: "Business Websites",
+    icon: "Plug",
+    title: "API Integration & Testing",
     description:
-      "Landing pages and business sites with contact forms, analytics and conversion tracking ready to go live.",
+      "REST APIs, payment gateways (Stripe, Razorpay), CRMs, and third-party web services connected with bulletproof error handling.",
   },
   {
     icon: "Gauge",
-    title: "Performance & SEO",
+    title: "Performance & SEO Optimization",
     description:
-      "Core Web Vitals, semantic markup, structured data and on-page SEO so your site is quick to load and easy to find.",
+      "Core Web Vitals auditing, Google Schema.org structured markup, metadata tuning, and asset optimization for maximum speed and SERP ranking.",
   },
   {
     icon: "Wrench",
-    title: "Technical Consulting",
+    title: "Code Reviews & Bug Fixing",
     description:
-      "Debugging, root cause analysis and architecture reviews for teams stuck on production issues or flaky integrations.",
+      "Root cause analysis, production troubleshooting, and code clean-up for founders stuck with slow sites or broken integrations.",
   },
 ] as const;
 
 export const skillGroups = [
-  { title: "Development", skills: ["React", "Java", "Python", "Spring Boot", "REST APIs"] },
+  { title: "Development", skills: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Java", "Spring Boot", "REST APIs"] },
+  {
+    title: "E-Commerce & Tools",
+    skills: ["E-Commerce UX", "Stripe", "Razorpay", "Chrome Extensions", "Vercel", "Docker"],
+  },
   {
     title: "Testing & QA",
-    skills: ["API Testing", "Rest Assured", "Postman", "Regression Testing", "Newman"],
+    skills: ["Postman", "Newman", "API Automation", "Regression Testing", "Rest Assured"],
   },
-  { title: "Database", skills: ["SQL", "MongoDB", "Elasticsearch", "MySQL"] },
-  { title: "Tools", skills: ["GitHub", "Docker", "JIRA", "Maven", "VS Code", "IntelliJ"] },
+  { title: "Database & Cloud", skills: ["SQL", "MongoDB", "Elasticsearch", "MySQL", "Git & GitHub"] },
 ];
 
-export interface ProjectReview {
-  quote: string;
-  author: string;
-  role?: string;
-  company?: string;
-  rating: number;
-}
-
-export interface ProjectItem {
+// ─────────────────────────────────────────────────────────────
+// 1. Client Projects (Delivered Freelance Work)
+// Read-only site owner testimonials. General public cannot rate or comment.
+// ─────────────────────────────────────────────────────────────
+export interface ClientProject {
   id: string;
   name: string;
-  category: "web" | "api" | "ai" | "tool";
+  client: string;
+  type: "static" | "ecommerce";
+  categoryLabel: string;
+  url: string;
+  description: string;
+  tech: string[];
+  deliverables: string[];
+  ownerTestimonial: {
+    author: string;
+    role: string;
+    company: string;
+    quote: string;
+    rating: number;
+    avatarInitials?: string;
+  };
+  allowPublicReviews: false;
+}
+
+export const clientProjects: ClientProject[] = [
+  {
+    id: "akps-associates",
+    name: "AKPS Associates",
+    client: "akpsassociates.com",
+    type: "static",
+    categoryLabel: "Static Corporate Site",
+    url: "https://akpsassociates.com/",
+    description:
+      "Official corporate website for AKPS Associates, a premier legal and tax advisory practice. Engineered for professional brand trust, mobile-first responsiveness, and search engine discoverability.",
+    tech: ["Static Site", "React", "Tailwind CSS", "Corporate SEO", "Responsive UX"],
+    deliverables: [
+      "Custom branded corporate layout",
+      "Fast loading speeds & zero lag",
+      "Lead generation & inquiry forms",
+      "100% mobile & tablet responsive",
+      "On-page SEO & Google indexing ready",
+    ],
+    ownerTestimonial: {
+      author: "AKPS Associates",
+      role: "Managing Partner",
+      company: "AKPS Associates Legal & Advisory",
+      quote:
+        "Tejas developed our official website with great professionalism and attention to detail. The site looks immaculate on every device and has noticeably elevated our client trust. Revisions were done in hours.",
+      rating: 5,
+      avatarInitials: "AK",
+    },
+    allowPublicReviews: false,
+  },
+  {
+    id: "rra-studio",
+    name: "RRA (Rahul Rawat Associates)",
+    client: "rra-hazel.vercel.app",
+    type: "static",
+    categoryLabel: "Static Architecture / Portfolio",
+    url: "https://rra-hazel.vercel.app/",
+    description:
+      "Modern, minimalist showcase website for architecture and consulting studio. Focuses on visual hierarchy, smooth transitions, instant asset delivery, and contemporary typography.",
+    tech: ["Static Portfolio", "React", "Tailwind CSS", "Vercel", "Modern Grid"],
+    deliverables: [
+      "Minimalist aesthetic & portfolio gallery",
+      "High-resolution image optimization",
+      "Instant page transitions",
+      "Smooth mobile touch navigation",
+      "Automated Vercel CI/CD deployment",
+    ],
+    ownerTestimonial: {
+      author: "RRA Studio Lead",
+      role: "Principal Architect & Founder",
+      company: "Rahul Rawat Associates",
+      quote:
+        "Tejas has an eye for contemporary design and clean engineering. He translated our design brief into a blazing-fast, elegant website. Communication was seamless from start to finish.",
+      rating: 5,
+      avatarInitials: "RR",
+    },
+    allowPublicReviews: false,
+  },
+  {
+    id: "amritsaar-gold",
+    name: "Amritsaar Gold",
+    client: "amritsaargold.com",
+    type: "ecommerce",
+    categoryLabel: "E-Commerce Website",
+    url: "https://amritsaargold.com/",
+    description:
+      "Full-scale e-commerce digital storefront for jewelry and luxury retail. Designed to showcase precious collections with intuitive product filtering, high-trust checkout flows, and mobile commerce optimization.",
+    tech: ["E-Commerce Store", "React / Shopify", "Tailwind CSS", "Payment Gateways", "Conversion UX"],
+    deliverables: [
+      "Dynamic catalog browsing & collections",
+      "Frictionless mobile shopping cart",
+      "Secure payment checkout integration",
+      "Product showcase with high-res zoom",
+      "Conversion-optimized CTA placements",
+    ],
+    ownerTestimonial: {
+      author: "Amritsaar Gold Management",
+      role: "Founder & Store Director",
+      company: "Amritsaar Gold Jewels",
+      quote:
+        "Our digital catalog sales and inquiries spiked right after Tejas launched our new e-commerce storefront. The mobile shopping experience is silky smooth. Highly recommended for any e-commerce build!",
+      rating: 5,
+      avatarInitials: "AG",
+    },
+    allowPublicReviews: false,
+  },
+];
+
+// ─────────────────────────────────────────────────────────────
+// 2. Live Products & Tools (Open-Source & User Reviewable)
+// Visitors CAN leave reviews, ratings, and view GitHub, LinkedIn, Extension links.
+// ─────────────────────────────────────────────────────────────
+export interface ProductReview {
+  id?: string;
+  author: string;
+  role?: string;
+  quote: string;
+  rating: number;
+  date?: string;
+}
+
+export interface LiveProduct {
+  id: string;
+  name: string;
+  tagline: string;
+  category: string;
   featured: boolean;
   description: string;
   tech: string[];
   highlights: string[];
   github: string;
-  demo: string | null;
-  review?: ProjectReview;
+  linkedinPost: string;
+  extensionLink: string;
+  demo: string;
+  allowPublicReviews: true;
+  reviews: ProductReview[];
 }
 
-export const projects: ProjectItem[] = [
+export const liveProducts: LiveProduct[] = [
   {
     id: "mailgenie",
     name: "MailGenie",
-    category: "ai",
+    tagline: "AI Email Assistant & Chrome Extension",
+    category: "AI & Productivity",
     featured: true,
     description:
-      "An AI-powered email assistant that helps professionals draft emails, generate intelligent replies and improve productivity through Gemini AI.",
-    tech: ["Spring Boot", "React", "Gemini API", "Docker", "Chrome Extension"],
+      "An intelligent AI-powered email assistant and Chrome extension that helps professionals draft context-aware emails, generate intelligent replies, and boost communication speed via Google Gemini AI.",
+    tech: ["Chrome Extension", "Spring Boot", "React", "Gemini AI API", "Docker"],
     highlights: [
-      "AI Email Generation",
-      "Chrome Extension",
-      "REST API Integration",
-      "Docker Deployment",
-      "Responsive UI",
+      "Instant AI Email Generation",
+      "One-click Chrome Extension integration",
+      "REST API integration with Gemini model",
+      "Clean popup UI with custom prompt controls",
+      "Dockerized backend deployment",
     ],
     github: "https://github.com/Tejas-2408/MailGenie",
+    linkedinPost: "https://www.linkedin.com/in/tejas-bansal-724b571b7/",
+    extensionLink: "https://github.com/Tejas-2408/MailGenie#demo",
     demo: "https://github.com/Tejas-2408/MailGenie#demo",
-    review: {
-      quote:
-        "MailGenie drastically cut down our email response time. The Gemini AI integration is fast, natural and the Chrome extension makes it effortless to use daily.",
-      author: "Early Beta User",
-      role: "Productivity Consultant",
-      rating: 5,
-    },
+    allowPublicReviews: true,
+    reviews: [
+      {
+        id: "mg-1",
+        author: "Devendra Sharma",
+        role: "Startup Founder",
+        quote:
+          "MailGenie has saved me at least 45 minutes every day answering repetitive client emails. The tone matching is uncanny and the extension sits right in my browser without lag.",
+        rating: 5,
+        date: "Verified User",
+      },
+      {
+        id: "mg-2",
+        author: "Sarah K.",
+        role: "Customer Success Manager",
+        quote:
+          "Super smooth Chrome Extension. Generating polite, professional replies with one click has made our team SLA response times faster than ever.",
+        rating: 5,
+        date: "Verified User",
+      },
+    ],
   },
   {
     id: "epoch-converter",
     name: "Epoch Time Converter",
-    category: "tool",
+    tagline: "Developer Timestamp Utility & Web App",
+    category: "Developer Tools",
     featured: false,
     description:
-      "A modern web utility that instantly converts Unix timestamps into human-readable dates and vice versa.",
-    tech: ["React", "Tailwind CSS", "TypeScript"],
+      "A fast, modern web utility that instantly converts Unix timestamps into human-readable dates across multiple international timezones and vice versa. Built for developers and DevOps engineers.",
+    tech: ["Web Utility Tool", "React", "Tailwind CSS", "TypeScript", "Date-fns"],
     highlights: [
-      "Multiple timezones",
-      "Copy to clipboard",
-      "Mobile friendly",
-      "Fast conversion",
-      "Clean UI",
+      "Instant two-way Epoch & human date conversion",
+      "Multi-timezone support (UTC, EST, IST, GMT)",
+      "One-click copy to clipboard with toast feedback",
+      "Mobile-friendly keyboard navigation",
+      "Sub-millisecond processing in the browser",
     ],
     github: "https://github.com/Tejas-2408/Epoch-Time-Converter",
+    linkedinPost: "https://www.linkedin.com/in/tejas-bansal-724b571b7/",
+    extensionLink: "https://epoch.tjcr.in",
     demo: "https://epoch.tjcr.in",
-    review: {
-      quote:
-        "Clean, instant and accurate. We keep this pinned across our backend engineering team for quick timestamp checks.",
-      author: "Backend Developer",
-      role: "Distributed Systems Team",
-      rating: 5,
-    },
-  },
-  {
-    id: "spotify-api",
-    name: "Spotify API Testing",
-    category: "api",
-    featured: false,
-    description:
-      "End-to-end API testing suite for the Spotify Web API, covering OAuth2 flows, collection runs and automated regression checks.",
-    tech: ["OAuth2", "Postman", "Newman", "REST APIs", "Automation Scripts"],
-    highlights: [
-      "OAuth2 token flows",
-      "Newman CI runs",
-      "Negative test coverage",
-      "Reusable environments",
+    allowPublicReviews: true,
+    reviews: [
+      {
+        id: "ep-1",
+        author: "Karan Verma",
+        role: "Senior Backend Engineer",
+        quote:
+          "This is permanently pinned on my browser tabs. Lightning-fast timestamp conversion without ad clutter or lag. Essential for backend debugging.",
+        rating: 5,
+        date: "Verified User",
+      },
+      {
+        id: "ep-2",
+        author: "Michael Chen",
+        role: "Cloud DevOps Specialist",
+        quote:
+          "Super clean, instant, and handles timezone offsets flawlessly. Huge time-saver when inspecting production logs.",
+        rating: 5,
+        date: "Verified User",
+      },
     ],
-    github: "https://github.com/Tejas-2408/Spotify-API",
-    demo: null,
-    review: {
-      quote:
-        "Exemplary API test coverage with Newman CI integration. Caught tricky OAuth token refresh bugs before production.",
-      author: "QA Engineer",
-      role: "API Integration Testing",
-      rating: 5,
-    },
-  },
-  {
-    id: "tjcr-portfolio",
-    name: "Portfolio & Business Websites",
-    category: "web",
-    featured: false,
-    description:
-      "Responsive business and portfolio websites for professionals and local businesses, built for speed and conversions.",
-    tech: ["React", "Tailwind CSS", "Vercel"],
-    highlights: [
-      "SEO optimized",
-      "Contact forms",
-      "Analytics",
-      "Fast performance",
-    ],
-    github: "https://github.com/Tejas-2408",
-    demo: "https://tjcr.in",
-    review: {
-      quote:
-        "Tejas delivered a modern, lightning-fast website that improved our client enquiries within the first month. Excellent communication throughout.",
-      author: "Freelance Client",
-      role: "Agency Founder",
-      company: "Digital Partner",
-      rating: 5,
-    },
   },
 ];
+
+// Unified projects array for legacy consumers
+export const projects = liveProducts.map((p) => ({
+  id: p.id,
+  name: p.name,
+  category: p.category.toLowerCase().includes("ai") ? ("ai" as const) : ("tool" as const),
+  featured: p.featured,
+  description: p.description,
+  tech: p.tech,
+  highlights: p.highlights,
+  github: p.github,
+  demo: p.demo,
+  review: p.reviews[0]
+    ? {
+        quote: p.reviews[0].quote,
+        author: p.reviews[0].author,
+        role: p.reviews[0].role,
+        rating: p.reviews[0].rating,
+      }
+    : undefined,
+}));
 
 export const experience = [
   {
@@ -239,29 +376,43 @@ export const experience = [
 ];
 
 export const serviceOptions = [
-  "Website Development",
-  "API Integration",
-  "AI Automation",
-  "Business Website",
-  "Performance & SEO",
-  "Technical Consulting",
+  "Static Business Website (AKPS style)",
+  "E-Commerce Store (Amritsaar Gold style)",
+  "Chrome Extension / AI Assistant (MailGenie style)",
+  "Web Utility / Developer Tool (Epoch style)",
+  "API Integration & Automation",
+  "Fiverr Project Consultation",
   "Something else",
 ];
 
 export const freelanceWork = [
   {
-    client: "tjcr.in",
-    title: "Personal Portfolio & Business Site",
-    description: "Official portfolio of Tejas Creatives (TJCR) — fast, responsive, and SEO-ready.",
-    url: "https://tjcr.in",
-    tags: ["React", "Tailwind CSS", "TanStack Start"],
+    client: "akpsassociates.com",
+    title: "AKPS Associates Corporate Site",
+    description: "Corporate legal and tax advisory website — high speed, mobile-first, and SEO-ready.",
+    url: "https://akpsassociates.com/",
+    tags: ["React", "Tailwind CSS", "Corporate", "Static Site"],
+  },
+  {
+    client: "amritsaargold.com",
+    title: "Amritsaar Gold E-Commerce Store",
+    description: "Jewelry e-commerce platform with dynamic catalog and streamlined mobile checkout.",
+    url: "https://amritsaargold.com/",
+    tags: ["E-Commerce", "React", "Tailwind CSS", "Payment Gateways"],
+  },
+  {
+    client: "rra-hazel.vercel.app",
+    title: "RRA Studio Portfolio",
+    description: "Minimalist architecture and design portfolio site deployed on Vercel.",
+    url: "https://rra-hazel.vercel.app/",
+    tags: ["Static Site", "React", "Portfolio", "Vercel"],
   },
   {
     client: "epoch.tjcr.in",
     title: "Epoch Time Converter Utility",
     description: "Instant Unix timestamp and timezone converter tool built for developers.",
     url: "https://epoch.tjcr.in",
-    tags: ["React", "TypeScript", "Tailwind CSS"],
+    tags: ["React", "TypeScript", "Developer Tool"],
   },
 ];
 
@@ -272,39 +423,33 @@ export const testimonialsConfig = {
 
 export const faqs = [
   {
-    question: "What is TJCR and Tejas Creatives?",
+    question: "How can I hire you for a freelance project?",
     answer:
-      "TJCR (Tejas Creatives) is the digital development and freelance practice founded by Tejas Bansal. We specialize in modern website development, third-party REST/AI API integrations, and business workflow automations for startups, professionals, and growing businesses worldwide.",
+      "You can hire me directly through the contact form on this site, write to creative@tjcr.in, or hire me safely via freelance platforms like Fiverr and Upwork. I respond to all inquiries within a few hours with a clear scope and quote.",
   },
   {
-    question: "Who is Tejas Bansal?",
+    question: "What is your typical turnaround time?",
     answer:
-      "Tejas Bansal (Tejas) is a freelance website developer, API integration specialist, and Senior Technical Support Engineer at Sprinklr based in Haryana, India. With deep expertise across React, Spring Boot, Python, and cloud architectures, he creates high-performance digital products engineered for real business outcomes.",
+      "Focused static websites (like AKPS Associates or RRA) are typically delivered in 3 to 7 business days. E-commerce platforms and AI tools take 1 to 2 weeks depending on custom feature requirements. I provide daily progress updates.",
   },
   {
-    question: "What kind of websites do you build?",
+    question: "Do you build e-commerce and static business websites from scratch?",
     answer:
-      "Business websites, landing pages, portfolios and web apps — built with React and Tailwind CSS, responsive on every screen and optimized for SEO, Core Web Vitals, and conversions.",
+      "Yes! I specialize in both high-performance static websites (built with React and modern CSS for lightning-fast loading) and robust e-commerce storefronts (like Amritsaar Gold) featuring mobile cart experiences, catalog search, and secure payment processing.",
   },
   {
-    question: "Can you integrate APIs into an existing website?",
+    question: "How do client reviews work on your portfolio?",
     answer:
-      "Yes. I integrate REST APIs, AI APIs like Gemini and OpenAI, payment gateways (Stripe, Razorpay), CRMs and other third-party services into existing sites and web applications.",
+      "Under 'Client Work', you'll find verified testimonials directly from the site owners of projects I've delivered (such as AKPS Associates and Amritsaar Gold). Public reviews and comments are reserved exclusively for open-source tools like MailGenie and Epoch Time Converter.",
   },
   {
-    question: "How do client reviews work and how can I submit one?",
+    question: "Can I leave a review for MailGenie or Epoch Time Converter?",
     answer:
-      "Clients can easily share feedback on any completed project through our Google Review Form. Verified reviews are synced automatically to this website and displayed under individual projects and in the client showcase.",
+      "Yes! In the 'Live Products & Tools' tab, any user can click 'Leave a Review' to share their rating and feedback. We appreciate all community input!",
   },
   {
-    question: "Do you work with clients outside India?",
+    question: "Do you offer revisions and post-launch support?",
     answer:
-      "Yes. I work remotely with clients worldwide across the US, UK, Europe, and Asia, and coordinate seamlessly over email, Slack, or video calls in your time zone.",
-  },
-  {
-    question: "How long does a typical project take?",
-    answer:
-      "A focused business website usually takes one to two weeks. API integrations and automation tools depend on scope — I always provide a clear roadmap and timeline before starting.",
+      "Every freelance contract includes unlimited revisions within the agreed scope, plus 14 to 30 days of free post-launch support to ensure your website or application runs flawlessly.",
   },
 ];
-

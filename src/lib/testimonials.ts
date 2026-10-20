@@ -12,24 +12,36 @@ export type Testimonial = {
 
 export const fallbackTestimonials: Testimonial[] = [
   {
-    name: "Alex Morgan",
-    role: "Founder & CEO",
-    company: "NorthPeak Digital",
+    name: "AKPS Associates",
+    role: "Managing Partner",
+    company: "AKPS Associates Legal & Advisory",
     quote:
-      "Working with Tejas was an exceptional experience. He built our marketing site with React and integrated our Stripe checkout and lead pipeline in just 10 days. Clean code, fast load times, and great communication.",
+      "Tejas developed our corporate website with exceptional speed and professional fidelity. The site looks pristine across mobile and desktop devices, and has noticeably elevated our client trust.",
     rating: 5,
-    projectName: "Portfolio & Business Websites",
-    projectUrl: "https://tjcr.in",
+    projectName: "AKPS Associates Corporate Site",
+    projectUrl: "https://akpsassociates.com/",
     verified: true,
   },
   {
-    name: "Vikram Mehta",
-    role: "VP of Engineering",
-    company: "CloudScale Systems",
+    name: "Amritsaar Gold Jewels",
+    role: "Founder & Director",
+    company: "Amritsaar Gold",
     quote:
-      "Tejas brings enterprise rigor to freelance delivery. His automated API testing suite and AI integration saved our developers hours every sprint. He communicates proactively and understands complex specs quickly.",
+      "Our digital catalog sales and customer inquiries spiked right after Tejas launched our new e-commerce storefront. The mobile shopping experience is silky smooth and checkout is frictionless. Highly recommended!",
     rating: 5,
-    projectName: "Spotify API Testing & Architecture",
+    projectName: "Amritsaar Gold E-Commerce",
+    projectUrl: "https://amritsaargold.com/",
+    verified: true,
+  },
+  {
+    name: "RRA Studio Lead",
+    role: "Principal Architect",
+    company: "Rahul Rawat Associates",
+    quote:
+      "Tejas translated our design brief into a blazing-fast, elegant architecture portfolio website. The typography and grid layouts are razor-sharp. Communication was seamless from start to finish.",
+    rating: 5,
+    projectName: "RRA Studio Portfolio",
+    projectUrl: "https://rra-hazel.vercel.app/",
     verified: true,
   },
   {

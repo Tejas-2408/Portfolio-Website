@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
-import { navItems, profile } from "@/data/portfolio";
+import { Menu, X, Moon, Sun, ExternalLink } from "lucide-react";
+import { navItems, profile, links } from "@/data/portfolio";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -63,7 +63,26 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2">
+          {links.fiverr && (
+            <a
+              href={links.fiverr}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white transition-colors"
+            >
+              <span>Fiverr Gig</span>
+              <ExternalLink size={12} />
+            </a>
+          )}
+
+          <a
+            href="#contact"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-1 text-xs font-semibold text-primary-foreground shadow-glow hover:-translate-y-0.5 transition-transform"
+          >
+            Hire Me
+          </a>
+
           <button
             type="button"
             onClick={() => setLight((v) => !v)}
@@ -86,17 +105,37 @@ export function Navbar() {
 
       {open && (
         <div className="border-t border-border bg-background/95 backdrop-blur-md md:hidden">
-          <div className="mx-auto flex max-w-5xl flex-col px-5 py-2">
+          <div className="mx-auto flex max-w-5xl flex-col px-5 py-3 gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-2 py-2.5 text-sm text-muted-foreground transition-colors hover:text-primary"
+                className="rounded-md px-2 py-2 text-sm text-muted-foreground transition-colors hover:text-primary"
               >
                 {item.label}
               </a>
             ))}
+
+            <div className="pt-2 mt-2 border-t border-border/60 flex items-center gap-2">
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="flex-1 text-center rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground"
+              >
+                Hire Me Directly
+              </a>
+              {links.fiverr && (
+                <a
+                  href={links.fiverr}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400"
+                >
+                  Order on Fiverr
+                </a>
+              )}
+            </div>
           </div>
         </div>
       )}

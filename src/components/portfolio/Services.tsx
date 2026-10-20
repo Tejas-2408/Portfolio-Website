@@ -1,7 +1,24 @@
-import { Globe, Plug, Bot, Building2, Gauge, Wrench, type LucideIcon } from "lucide-react";
+import {
+  Globe,
+  Plug,
+  Bot,
+  Building2,
+  Gauge,
+  Wrench,
+  ShoppingBag,
+  type LucideIcon,
+} from "lucide-react";
 import { services } from "@/data/portfolio";
 
-const icons: Record<string, LucideIcon> = { Globe, Plug, Bot, Building2, Gauge, Wrench };
+const icons: Record<string, LucideIcon> = {
+  Globe,
+  Plug,
+  Bot,
+  Building2,
+  Gauge,
+  Wrench,
+  ShoppingBag,
+};
 
 export function Services() {
   return (

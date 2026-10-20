@@ -1,7 +1,18 @@
 import { useState } from "react";
-import { ArrowRight, MapPin, Mail, Copy, Check, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  MapPin,
+  Mail,
+  Copy,
+  Check,
+  Sparkles,
+  Zap,
+  ShieldCheck,
+  Star,
+  ExternalLink,
+} from "lucide-react";
 import { toast } from "sonner";
-import { profile } from "@/data/portfolio";
+import { profile, links, freelanceGuarantees } from "@/data/portfolio";
 import { SocialLinks } from "./SocialLinks";
 
 export function Hero() {
@@ -40,8 +51,8 @@ export function Hero() {
         <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight sm:text-6xl">
           <span className="text-gradient">{profile.name}</span>
           <span className="mt-2 block text-2xl font-normal text-muted-foreground sm:text-3xl">
-            Founder &amp; Developer at{" "}
-            <span className="font-semibold text-foreground">Tejas Creatives (TJCR)</span>
+            Freelance Developer for{" "}
+            <span className="font-semibold text-foreground">Fast Websites, E-Commerce &amp; AI Tools</span>
           </span>
         </h1>
 
@@ -59,21 +70,35 @@ export function Hero() {
           <span>{profile.secondaryTitle}</span>
         </p>
 
+        {/* CTA Buttons */}
         <div className="mt-9 flex flex-wrap items-center gap-3">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
           >
-            Hire me
+            Start a Project
             <ArrowRight size={16} aria-hidden="true" />
           </a>
+
+          {links.fiverr && (
+            <a
+              href={links.fiverr}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400 transition-colors hover:bg-emerald-500 hover:text-white"
+            >
+              <span>Hire on Fiverr</span>
+              <ExternalLink size={14} aria-hidden="true" />
+            </a>
+          )}
+
           <a
-            href={`mailto:${profile.email}`}
-            className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary/60 hover:text-primary"
+            href="#projects"
+            className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:border-primary/60 hover:text-primary"
           >
-            <Mail size={16} aria-hidden="true" />
-            Email me
+            View Client Work
           </a>
+
           <button
             type="button"
             onClick={handleCopyEmail}
@@ -87,6 +112,19 @@ export function Hero() {
             )}
             <span>{copied ? "Copied" : "Copy email"}</span>
           </button>
+        </div>
+
+        {/* Freelance Trust Pillars */}
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 border-t border-border/50 pt-8">
+          {freelanceGuarantees.map((item) => (
+            <div key={item.title} className="rounded-xl border border-border/60 bg-card/40 p-3.5">
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
+                <Check size={13} className="text-emerald-500 shrink-0" />
+                <span>{item.title}</span>
+              </div>
+              <p className="mt-1 text-[11px] text-muted-foreground leading-normal">{item.desc}</p>
+            </div>
+          ))}
         </div>
 
         <div className="mt-8">
