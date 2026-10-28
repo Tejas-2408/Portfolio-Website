@@ -23,13 +23,13 @@ export const fallbackTestimonials: Testimonial[] = [
     verified: true,
   },
   {
-    name: "Amritsaar Gold Jewels",
-    role: "Founder & Director",
-    company: "Amritsaar Gold",
+    name: "Amritsaar Gold Dairy",
+    role: "Founder & Operations Director",
+    company: "Amritsaar Gold Dairy Products",
     quote:
-      "Our digital catalog sales and customer inquiries spiked right after Tejas launched our new e-commerce storefront. The mobile shopping experience is silky smooth and checkout is frictionless. Highly recommended!",
+      "Our online dairy sales and customer subscription orders scaled rapidly after Tejas launched our new e-commerce storefront. The mobile shopping experience is silky smooth and checkout is frictionless. Highly recommended!",
     rating: 5,
-    projectName: "Amritsaar Gold E-Commerce",
+    projectName: "Amritsaar Gold Dairy E-Commerce",
     projectUrl: "https://amritsaargold.com/",
     verified: true,
   },

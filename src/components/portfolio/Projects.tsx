@@ -407,7 +407,8 @@ function LiveProductCard({
           >
             <Puzzle size={14} />
             <span>
-              {product.id === "mailgenie" ? "Try Extension / Demo" : "Launch Web App"}
+              {product.actionLabel ||
+                (product.id === "mailgenie" ? "Try Extension / Demo" : "Launch Web App")}
             </span>
             <ExternalLink size={12} />
           </a>

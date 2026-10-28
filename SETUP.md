@@ -18,7 +18,7 @@ This guide walks you through collecting and displaying **verified client reviews
 
 Your portfolio distinguishes between:
 - **Client Work (Delivered)**: Private commercial deliveries for clients (e.g. AKPS Associates, Amritsaar Gold, RRA). These feature **verified site owner testimonials** only. Random visitors cannot leave spam comments.
-- **My Builds & Tools**: Open-source utilities (MailGenie, Epoch Time Converter) where anyone can explore code on GitHub, contribute, or leave community feedback.
+- **My Builds & Tools**: Open-source utilities (MailGenie, Epoch Time Converter, Cron Expression Converter, ZipLink) where anyone can explore code on GitHub, contribute, or leave community feedback.
 
 ### Option A: Google Form + Google Sheets CSV Sync
 

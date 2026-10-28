@@ -27,7 +27,7 @@ export const profile = {
   about: [
     "I'm Tejas Bansal, founder of Tejas Creatives (TJCR) and an active freelance software developer specializing in vibe coding, modern full-stack web engineering, and AI tools.",
     "I craft ultra-responsive, visually refined web applications that feel effortless to browse, load in under a second, convert visitors into clients, and rank at the top of search engines.",
-    "From corporate static websites (AKPS Associates, RRA) to high-volume e-commerce storefronts (Amritsaar Gold) and intelligent browser extensions/AI tools (MailGenie, Epoch Time Converter), I bring ideas to life with high aesthetic standards and clean code.",
+    "From corporate static websites (AKPS Associates, RRA) to high-volume e-commerce storefronts (Amritsaar Gold) and open-source utilities (MailGenie, Epoch Time Converter, Cron Expression Converter, ZipLink), I bring ideas to life with high aesthetic standards and clean code.",
     "Available for custom freelance contracts directly and via platforms like Fiverr, backed by fast 3–7 day delivery, daily communication, and a 100% satisfaction guarantee.",
   ],
 };
@@ -113,7 +113,7 @@ export const skillGroups = [
   },
   {
     title: "E-Commerce & Database",
-    skills: ["E-Commerce UX", "Stripe", "Razorpay", "PostgreSQL", "MongoDB", "SQL", "Elasticsearch"],
+    skills: ["Dairy & Retail E-Commerce UX", "Stripe", "Razorpay", "PostgreSQL", "MongoDB", "SQL", "Elasticsearch"],
   },
 ];
 
@@ -204,24 +204,24 @@ export const clientProjects: ClientProject[] = [
     name: "Amritsaar Gold",
     client: "amritsaargold.com",
     type: "ecommerce",
-    categoryLabel: "E-Commerce Website",
+    categoryLabel: "Dairy E-Commerce Platform",
     url: "https://amritsaargold.com/",
     description:
-      "Full-scale e-commerce digital storefront for jewelry and luxury retail. Designed to showcase precious collections with intuitive product filtering, high-trust checkout flows, and mobile commerce optimization.",
-    tech: ["E-Commerce Store", "React / Shopify", "Tailwind CSS", "Payment Gateways", "Conversion UX"],
+      "Full-scale direct-to-consumer e-commerce storefront for pure dairy products, artisan desi ghee, and fresh milk essentials. Designed with clean product catalog navigation, freshness assurance, high-trust checkout flows, and mobile commerce optimization.",
+    tech: ["Dairy E-Commerce", "React / Shopify", "Tailwind CSS", "Payment Gateways", "Conversion UX"],
     deliverables: [
-      "Dynamic catalog browsing & collections",
-      "Frictionless mobile shopping cart",
-      "Secure payment checkout integration",
-      "Product showcase with high-res zoom",
+      "Dynamic dairy catalog & freshness collections",
+      "Frictionless mobile shopping cart & subscriptions",
+      "Secure payment checkout & UPI integration",
+      "Nutritional facts & purity certificate showcase",
       "Conversion-optimized CTA placements",
     ],
     ownerTestimonial: {
-      author: "Amritsaar Gold Management",
-      role: "Founder & Store Director",
-      company: "Amritsaar Gold Jewels",
+      author: "Amritsaar Gold Dairy",
+      role: "Founder & Operations Director",
+      company: "Amritsaar Gold Dairy Products",
       quote:
-        "Our digital catalog sales and inquiries spiked right after Tejas launched our new e-commerce storefront. The mobile shopping experience is silky smooth. Highly recommended for any e-commerce build!",
+        "Our online dairy sales and customer subscription orders scaled rapidly after Tejas launched our new e-commerce storefront. The mobile shopping experience is silky smooth and checkout is frictionless. Highly recommended for any e-commerce build!",
       rating: 5,
       avatarInitials: "AG",
     },
@@ -255,6 +255,7 @@ export interface LiveProduct {
   linkedinPost: string;
   extensionLink: string;
   demo: string;
+  actionLabel?: string;
   allowPublicReviews: true;
   reviews: ProductReview[];
 }
@@ -280,6 +281,7 @@ export const liveProducts: LiveProduct[] = [
     linkedinPost: "https://www.linkedin.com/in/tejas24bansal/",
     extensionLink: "https://github.com/Tejas-2408/MailGenie#demo",
     demo: "https://github.com/Tejas-2408/MailGenie#demo",
+    actionLabel: "Try Extension / Demo",
     allowPublicReviews: true,
     reviews: [
       {
@@ -322,6 +324,7 @@ export const liveProducts: LiveProduct[] = [
     linkedinPost: "https://www.linkedin.com/in/tejas24bansal/",
     extensionLink: "https://epoch.tjcr.in",
     demo: "https://epoch.tjcr.in",
+    actionLabel: "Launch Web App",
     allowPublicReviews: true,
     reviews: [
       {
@@ -339,6 +342,74 @@ export const liveProducts: LiveProduct[] = [
         role: "Cloud DevOps Specialist",
         quote:
           "Super clean, instant, and handles timezone offsets flawlessly. Huge time-saver when inspecting production logs.",
+        rating: 5,
+        date: "Verified User",
+      },
+    ],
+  },
+  {
+    id: "cron-converter",
+    name: "Cron Expression Converter",
+    tagline: "Cron Schedule Parser & Human-Readable Translator",
+    category: "Developer Tools",
+    featured: false,
+    description:
+      "A developer utility for parsing, converting, and describing complex Cron syntax into clear human-readable schedules with next execution projections and timezone offsets.",
+    tech: ["Developer Tool", "TypeScript", "React", "Tailwind CSS", "Cron Parser"],
+    highlights: [
+      "Instant Cron syntax to human-readable plain English",
+      "Next scheduled execution timestamps calculator",
+      "Supports standard 5-part and 6-part Cron schedules",
+      "One-click copy to clipboard with toast notification",
+      "Sub-millisecond validation & syntax error highlighting",
+    ],
+    github: "https://github.com/Tejas-2408/cron-expression-converter",
+    linkedinPost: "https://www.linkedin.com/in/tejas24bansal/",
+    extensionLink: "https://github.com/Tejas-2408/cron-expression-converter",
+    demo: "https://github.com/Tejas-2408/cron-expression-converter",
+    actionLabel: "Explore Cron Utility",
+    allowPublicReviews: true,
+    reviews: [
+      {
+        id: "cr-1",
+        author: "Rohan Gupta",
+        role: "DevOps Engineer",
+        quote:
+          "Translates arcane cron strings into plain English instantly. The projected next runs feature prevents broken cron jobs before pushing to production.",
+        rating: 5,
+        date: "Verified User",
+      },
+    ],
+  },
+  {
+    id: "ziplink",
+    name: "ZipLink",
+    tagline: "High-Performance URL Shortener & Link Hub",
+    category: "Web Utilities & APIs",
+    featured: true,
+    description:
+      "A modern, lightning-fast URL shortening and link management service featuring custom slug aliases, instant click analytics, and clean QR code generation for quick mobile sharing.",
+    tech: ["Web Utility", "React", "TypeScript", "REST API", "Tailwind CSS"],
+    highlights: [
+      "Instant link shortening & custom slug aliases",
+      "Low-latency URL redirection engine",
+      "QR code generation for one-click mobile scanning",
+      "Clean, responsive UI with quick copy action",
+      "Zero bloat, lightweight micro-service architecture",
+    ],
+    github: "https://github.com/Tejas-2408/ZipLink",
+    linkedinPost: "https://www.linkedin.com/in/tejas24bansal/",
+    extensionLink: "https://github.com/Tejas-2408/ZipLink",
+    demo: "https://github.com/Tejas-2408/ZipLink",
+    actionLabel: "Launch ZipLink",
+    allowPublicReviews: true,
+    reviews: [
+      {
+        id: "zl-1",
+        author: "Pooja Malhotra",
+        role: "Growth Marketer",
+        quote:
+          "ZipLink is snappy, clean, and generates QR codes in seconds. Exactly what was needed without the clutter of enterprise link shorteners.",
         rating: 5,
         date: "Verified User",
       },
@@ -405,9 +476,10 @@ export const experience = vibeWorkflow.map((item) => ({
 
 export const serviceOptions = [
   "Static Business Website (AKPS style)",
-  "E-Commerce Store (Amritsaar Gold style)",
+  "Dairy / Retail E-Commerce Store (Amritsaar Gold style)",
   "Chrome Extension / AI Assistant (MailGenie style)",
-  "Web Utility / Developer Tool (Epoch style)",
+  "Web Utility / Developer Tool (Epoch & Cron style)",
+  "URL Shortener / Link Hub (ZipLink style)",
   "Vibe Coding & Rapid MVP Prototype",
   "API Integration & Automation",
   "Fiverr Project Consultation",
@@ -424,10 +496,10 @@ export const freelanceWork = [
   },
   {
     client: "amritsaargold.com",
-    title: "Amritsaar Gold E-Commerce Store",
-    description: "Jewelry e-commerce platform with dynamic catalog and streamlined mobile checkout.",
+    title: "Amritsaar Gold Dairy E-Commerce Store",
+    description: "Direct-to-consumer dairy e-commerce platform with dynamic catalog, fresh delivery options, and streamlined mobile checkout.",
     url: "https://amritsaargold.com/",
-    tags: ["E-Commerce", "React", "Tailwind CSS", "Payment Gateways"],
+    tags: ["Dairy E-Commerce", "React", "Tailwind CSS", "Payment Gateways"],
   },
   {
     client: "rra-hazel.vercel.app",
@@ -469,7 +541,7 @@ export const faqs = [
   {
     question: "Can I explore the code or contribute to your personal projects?",
     answer:
-      "Yes! All personal builds like MailGenie and Epoch Time Converter link directly to public GitHub repositories. You can refer to the architecture, fork, submit pull requests, or contribute code.",
+      "Yes! All personal builds like MailGenie, Epoch Time Converter, Cron Expression Converter, and ZipLink link directly to public GitHub repositories. You can refer to the architecture, fork, submit pull requests, or contribute code.",
   },
   {
     question: "How do client reviews work on your portfolio?",
