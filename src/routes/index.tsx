@@ -12,9 +12,9 @@ import { Footer } from "@/components/portfolio/Footer";
 import { brand, profile, links, services, faqs } from "@/data/portfolio";
 import { Showcase } from "@/components/portfolio/Showcase";
 
-const title = "Tejas Bansal | Freelance Web Developer, E-Commerce & AI Specialist — TJCR";
+const title = "Tejas Bansal | Freelance Software Developer & Vibe Coder — TJCR";
 const description =
-  "Official website of Tejas Bansal (Tejas Creatives / TJCR) — freelance developer for static corporate websites, e-commerce stores, and AI tools. Available on Fiverr & direct hire with 3–7 day delivery.";
+  "Official website of Tejas Bansal (Tejas Creatives / TJCR) — freelance software developer specializing in vibe coding, fast static websites, modern e-commerce stores, and AI tools. Available on Fiverr & direct contracts.";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "tjcr, tejas creatives, tejas bansal, tejas, freelance website developer, fiverr web developer, e-commerce developer, static website developer, React developer India, API integration specialist, Chrome extension developer, AI automation builder, AKPS associates website, Amritsaar Gold developer",
+          "tjcr, tejas creatives, tejas bansal, tejas, vibe coding, vibe coder, freelance software developer, fiverr web developer, e-commerce developer, static website developer, React 19 developer, TypeScript developer, Chrome extension developer, AI automation builder, AKPS associates website, Amritsaar Gold developer",
       },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
@@ -50,16 +50,16 @@ export const Route = createFileRoute("/")({
               "@id": `${links.siteUrl}/#person`,
               name: "Tejas Bansal",
               alternateName: ["Tejas", "TJCR", "Tejas Creatives"],
-              jobTitle: "Freelance Website Developer & API Specialist",
+              jobTitle: "Freelance Software Developer & Vibe Coder",
               worksFor: {
                 "@type": "Organization",
-                name: "Sprinklr",
+                name: brand.name,
               },
               email: profile.email,
               url: links.siteUrl,
               sameAs: [links.github, links.linkedin, links.leetcode, links.fiverr].filter(Boolean),
               description:
-                "Tejas Bansal is a freelance website developer, e-commerce builder, and founder of Tejas Creatives (TJCR).",
+                "Tejas Bansal is a freelance software developer specializing in vibe coding, high-converting e-commerce, and AI tools, founder of Tejas Creatives (TJCR).",
             },
             {
               "@type": "Organization",
@@ -121,24 +121,30 @@ export const Route = createFileRoute("/")({
                 {
                   "@type": "ListItem",
                   position: 2,
-                  name: "Client Work & Projects",
-                  item: `${links.siteUrl}/#projects`,
+                  name: "Client Work",
+                  item: `${links.siteUrl}/#client-work`,
                 },
                 {
                   "@type": "ListItem",
                   position: 3,
+                  name: "My Builds",
+                  item: `${links.siteUrl}/#my-builds`,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 4,
                   name: "Services",
                   item: `${links.siteUrl}/#services`,
                 },
                 {
                   "@type": "ListItem",
-                  position: 4,
-                  name: "Reviews & Testimonials",
+                  position: 5,
+                  name: "Reviews",
                   item: `${links.siteUrl}/#showcase`,
                 },
                 {
                   "@type": "ListItem",
-                  position: 5,
+                  position: 6,
                   name: "Contact",
                   item: `${links.siteUrl}/#contact`,
                 },
@@ -158,18 +164,23 @@ function Index() {
       <main>
         <Hero />
 
-        {/* Featured Projects with Dual Tabs: Client Work & Live Products */}
+        {/* Featured Projects with Dual Tabs: Client Work & My Builds */}
         <Section
           id="projects"
-          eyebrow="Portfolio & Delivery"
+          eyebrow="Portfolio & Builds"
           title="Delivered Client Sites & Live Products"
         >
           <Projects />
         </Section>
 
-        {/* Freelance Services Offered */}
+        {/* Freelance Services */}
         <Section id="services" eyebrow="Freelance Services" title="What I Build for Clients">
           <Services />
+        </Section>
+
+        {/* Vibe Coding Workflow & Process */}
+        <Section id="vibe" eyebrow="The Process" title="Vibe Coding: Concept to Production in 4 Steps">
+          <Experience />
         </Section>
 
         {/* Client Testimonials Showcase */}
@@ -187,7 +198,7 @@ function Index() {
         </Section>
 
         {/* About Tejas Bansal & TJCR */}
-        <Section id="about" eyebrow="About Tejas" title="A developer who builds for business outcomes">
+        <Section id="about" eyebrow="About Tejas" title="Software Developer who crafts for business outcomes">
           <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
             {profile.about.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -195,18 +206,13 @@ function Index() {
           </div>
         </Section>
 
-        {/* Enterprise Experience */}
-        <Section id="experience" eyebrow="Enterprise Background" title="Engineering Experience">
-          <Experience />
-        </Section>
-
         {/* FAQ */}
-        <Section id="faq" eyebrow="FAQ" title="Freelancing & Process Questions">
+        <Section id="faq" eyebrow="FAQ" title="Freelancing & Vibe Coding Questions">
           <FaqSection />
         </Section>
 
         {/* Contact & Hire CTA */}
-        <Section id="contact" eyebrow="Hire Me" title="Let's build something extraordinary">
+        <Section id="contact" eyebrow="Hire Me" title="Let's build something extraordinary together">
           <Contact />
         </Section>
       </main>

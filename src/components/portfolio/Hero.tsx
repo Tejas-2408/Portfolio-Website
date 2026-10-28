@@ -7,71 +7,77 @@ import {
   Check,
   Sparkles,
   Zap,
-  ShieldCheck,
-  Star,
+  Globe,
   ExternalLink,
+  Code2,
 } from "lucide-react";
 import { toast } from "sonner";
 import { profile, links, freelanceGuarantees } from "@/data/portfolio";
 import { SocialLinks } from "./SocialLinks";
 
 export function Hero() {
-  const [copied, setCopied] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
 
-  const handleCopyEmail = async () => {
+  const handleCopy = async (email: string) => {
     try {
-      await navigator.clipboard.writeText(profile.email);
-      setCopied(true);
-      toast.success("Email copied to clipboard!", {
-        description: profile.email,
-      });
-      setTimeout(() => setCopied(false), 2000);
+      await navigator.clipboard.writeText(email);
+      setCopiedEmail(email);
+      toast.success("Email copied to clipboard!", { description: email });
+      setTimeout(() => setCopiedEmail(null), 2000);
     } catch {
-      toast.info(`Contact: ${profile.email}`);
+      toast.info(`Contact: ${email}`);
     }
   };
 
   return (
     <section
       id="top"
-      className="grid-backdrop flex min-h-[92svh] items-center border-b border-border/60 px-5 pt-24 pb-16"
+      className="grid-backdrop flex min-h-[92svh] items-center border-b border-border/60 px-5 pt-28 pb-20"
     >
       <div className="mx-auto w-full max-w-5xl">
-        <div className="flex flex-wrap items-center gap-2.5">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-            <Sparkles size={13} className="text-primary" aria-hidden="true" />
-            TJCR • Tejas Creatives
+        {/* Vibe Status Badges */}
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3.5 py-1 text-xs font-semibold text-primary">
+            <Sparkles size={13} className="text-primary animate-pulse" aria-hidden="true" />
+            Vibe Coding &amp; Full-Stack Freelancer
           </span>
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
-            <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3.5 py-1 text-xs text-muted-foreground backdrop-blur">
+            <span className="size-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
             {profile.availability}
           </p>
         </div>
 
-        <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight sm:text-6xl">
+        {/* Hero Title */}
+        <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl">
           <span className="text-gradient">{profile.name}</span>
-          <span className="mt-2 block text-2xl font-normal text-muted-foreground sm:text-3xl">
-            Freelance Developer for{" "}
-            <span className="font-semibold text-foreground">Fast Websites, E-Commerce &amp; AI Tools</span>
+          <span className="mt-3 block text-2xl font-medium text-muted-foreground sm:text-3xl md:text-4xl">
+            Building fast, aesthetic web apps for{" "}
+            <span className="font-semibold text-foreground">startups &amp; founders</span>.
           </span>
         </h1>
 
-        <p className="mt-4 text-sm font-medium text-primary sm:text-base">{profile.title}</p>
-
-        <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
           {profile.heroSubtitle}
         </p>
 
-        <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground/90">
-          <span className="inline-flex items-center gap-1.5">
-            <MapPin size={14} aria-hidden="true" />
+        {/* Quick Info & Location */}
+        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5 font-medium text-foreground">
+            <MapPin size={15} className="text-primary" aria-hidden="true" />
             {profile.location}
           </span>
-          <span>{profile.secondaryTitle}</span>
-        </p>
+          <span className="inline-flex items-center gap-1.5">
+            <Zap size={15} className="text-amber-400" aria-hidden="true" />
+            3–7 Day Turnaround
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Globe size={15} className="text-sky-400" aria-hidden="true" />
+            Remote Worldwide
+          </span>
+        </div>
 
-        {/* CTA Buttons */}
-        <div className="mt-9 flex flex-wrap items-center gap-3">
+        {/* CTA Actions */}
+        <div className="mt-9 flex flex-wrap items-center gap-3.5">
           <a
             href="#contact"
             className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
@@ -93,40 +99,70 @@ export function Hero() {
           )}
 
           <a
-            href="#projects"
+            href="#client-work"
             className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:border-primary/60 hover:text-primary"
           >
-            View Client Work
+            Delivered Work
           </a>
 
+          <a
+            href="#my-builds"
+            className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:border-primary/60 hover:text-primary"
+          >
+            <Code2 size={15} />
+            My Builds
+          </a>
+        </div>
+
+        {/* Dual Email Quick Actions */}
+        <div className="mt-6 flex flex-wrap items-center gap-2 text-xs">
+          <span className="text-muted-foreground">Direct Emails:</span>
           <button
             type="button"
-            onClick={handleCopyEmail}
-            aria-label="Copy email address"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-3.5 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary"
+            onClick={() => handleCopy(profile.professionalEmail)}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/80 px-2.5 py-1 text-xs font-mono text-foreground hover:border-primary hover:text-primary transition-colors"
           >
-            {copied ? (
-              <Check size={16} className="text-emerald-500" aria-hidden="true" />
+            <Mail size={12} className="text-primary" />
+            <span>{profile.professionalEmail}</span>
+            {copiedEmail === profile.professionalEmail ? (
+              <Check size={12} className="text-emerald-500" />
             ) : (
-              <Copy size={16} aria-hidden="true" />
+              <Copy size={12} className="text-muted-foreground" />
             )}
-            <span>{copied ? "Copied" : "Copy email"}</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleCopy(profile.personalEmail)}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/80 px-2.5 py-1 text-xs font-mono text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+          >
+            <span>{profile.personalEmail}</span>
+            {copiedEmail === profile.personalEmail ? (
+              <Check size={12} className="text-emerald-500" />
+            ) : (
+              <Copy size={12} className="text-muted-foreground" />
+            )}
           </button>
         </div>
 
-        {/* Freelance Trust Pillars */}
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 border-t border-border/50 pt-8">
+        {/* Vibe Guarantees / Trust Badges */}
+        <div className="mt-12 grid grid-cols-2 gap-3.5 sm:grid-cols-4 border-t border-border/50 pt-8">
           {freelanceGuarantees.map((item) => (
-            <div key={item.title} className="rounded-xl border border-border/60 bg-card/40 p-3.5">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
-                <Check size={13} className="text-emerald-500 shrink-0" />
+            <div
+              key={item.title}
+              className="rounded-2xl border border-border/60 bg-card/50 p-4 transition-all hover:border-primary/40 hover:-translate-y-0.5"
+            >
+              <div className="flex items-center gap-2 text-xs font-semibold text-foreground">
+                <span className="flex size-4 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500">
+                  <Check size={12} />
+                </span>
                 <span>{item.title}</span>
               </div>
-              <p className="mt-1 text-[11px] text-muted-foreground leading-normal">{item.desc}</p>
+              <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
 
+        {/* Socials */}
         <div className="mt-8">
           <SocialLinks variant="outline" />
         </div>

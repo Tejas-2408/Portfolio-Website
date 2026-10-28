@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ExternalLink,
   Github,
@@ -6,19 +6,19 @@ import {
   Puzzle,
   Check,
   Star,
-  MessageSquare,
   Quote,
   ShieldCheck,
   ShoppingBag,
   Globe,
   Plus,
   Send,
+  Code2,
+  Sparkles,
 } from "lucide-react";
 import { toast } from "sonner";
 import {
   clientProjects,
   liveProducts,
-  testimonialsConfig,
   type ClientProject,
   type LiveProduct,
   type ProductReview,
@@ -38,6 +38,33 @@ export function Projects() {
 
   // Keep state for live products so users can add their own reviews in the session
   const [productsData, setProductsData] = useState<LiveProduct[]>(liveProducts);
+
+  // Sync tab with URL hash or custom nav events
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash;
+      if (hash === "#my-builds" || hash === "#products") {
+        setActiveMainTab("products");
+      } else if (hash === "#client-work" || hash === "#client-projects" || hash === "#projects") {
+        setActiveMainTab("client");
+      }
+    };
+
+    const handleCustomTab = (e: Event) => {
+      const customEvent = e as CustomEvent<"client" | "products">;
+      if (customEvent.detail) {
+        setActiveMainTab(customEvent.detail);
+      }
+    };
+
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    window.addEventListener("tab-select", handleCustomTab);
+    return () => {
+      window.removeEventListener("hashchange", handleHash);
+      window.removeEventListener("tab-select", handleCustomTab);
+    };
+  }, []);
 
   const filteredClientProjects =
     clientFilter === "all"
@@ -62,9 +89,13 @@ export function Projects() {
 
   return (
     <div className="space-y-8">
+      {/* Anchor targets for smooth navbar navigation */}
+      <div id="client-work" className="-mt-24 pt-24" />
+      <div id="my-builds" className="-mt-24 pt-24" />
+
       {/* Primary Section Switcher Tabs */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-b border-border/80 pb-4">
-        <div className="inline-flex rounded-2xl border border-border bg-card/80 p-1.5 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-b border-border/80 pb-5">
+        <div className="inline-flex rounded-2xl border border-border bg-card/90 p-1.5 shadow-sm">
           <button
             type="button"
             onClick={() => setActiveMainTab("client")}
@@ -89,32 +120,32 @@ export function Projects() {
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            <Puzzle size={16} aria-hidden="true" />
-            Live Products &amp; Tools
+            <Code2 size={16} aria-hidden="true" />
+            My Builds &amp; Tools
             <span className="ml-1 rounded-full bg-primary/20 px-2 py-0.5 text-[11px] font-bold text-primary">
-              Reviewable
+              Live &amp; Open
             </span>
           </button>
         </div>
 
         <div className="text-xs text-muted-foreground">
           {activeMainTab === "client" ? (
-            <span className="inline-flex items-center gap-1.5 font-medium text-emerald-500">
-              <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
-              Verified Client Deliveries • 100% 5-Star Reviews
+            <span className="inline-flex items-center gap-1.5">
+              <span className="size-2 rounded-full bg-emerald-500" />
+              Verified client work with site owner testimonials
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1.5 font-medium text-primary">
-              <MessageSquare size={13} />
-              Open for Community Feedback &amp; Ratings
+            <span className="inline-flex items-center gap-1.5">
+              <Sparkles size={13} className="text-primary" />
+              Live interactive products &amp; GitHub source code
             </span>
           )}
         </div>
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          TAB 1: CLIENT DELIVERIES (STATIC SITES & E-COMMERCE)
-          Verified site owner testimonials only. Public rating disabled.
+          TAB 1: CLIENT WORK (DELIVERED FREELANCE PROJECTS)
+          AKPS Associates, RRA Studio, Amritsaar Gold
       ───────────────────────────────────────────────────────────── */}
       {activeMainTab === "client" && (
         <div className="space-y-6">
@@ -122,8 +153,8 @@ export function Projects() {
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-medium text-muted-foreground mr-1">Filter by:</span>
             {[
-              { id: "all", label: "All Client Work" },
-              { id: "static", label: "Static Corporate & Portfolio Sites" },
+              { id: "all", label: "All Client Projects" },
+              { id: "static", label: "Corporate & Portfolio Sites" },
               { id: "ecommerce", label: "E-Commerce Stores" },
             ].map((sub) => {
               const isActive = clientFilter === sub.id;
@@ -151,18 +182,18 @@ export function Projects() {
             ))}
           </div>
 
-          <div className="rounded-2xl border border-dashed border-border bg-card/40 p-5 text-center text-xs text-muted-foreground">
-            🔒 Note: Testimonials above are authenticated directly by the respective site owners of{" "}
+          <div className="rounded-2xl border border-dashed border-border bg-card/40 p-4 text-center text-xs text-muted-foreground">
+            🔒 Reviews displayed above are verified directly from the site owners of{" "}
             <strong className="text-foreground">akpsassociates.com</strong>,{" "}
             <strong className="text-foreground">amritsaargold.com</strong>, and{" "}
-            <strong className="text-foreground">rra-hazel.vercel.app</strong>. Public ratings and comments are disabled for private client deliveries.
+            <strong className="text-foreground">rra-hazel.vercel.app</strong>.
           </div>
         </div>
       )}
 
       {/* ─────────────────────────────────────────────────────────────
-          TAB 2: LIVE PRODUCTS & TOOLS (OPEN-SOURCE & PUBLICLY REVIEWABLE)
-          GitHub link, LinkedIn post link, Chrome Extension link, and Review Dialog.
+          TAB 2: MY BUILDS & TOOLS (OPEN-SOURCE & COMMUNITY)
+          MailGenie & Epoch Converter
       ───────────────────────────────────────────────────────────── */}
       {activeMainTab === "products" && (
         <div className="space-y-6">
@@ -172,7 +203,7 @@ export function Projects() {
                 Live Products &amp; Developer Extensions
               </h4>
               <p className="text-xs text-muted-foreground">
-                Test my live web applications, inspect source code on GitHub, check LinkedIn launch updates, and leave your own review.
+                Explore the live apps, refer to the code or contribute on GitHub, and view launch posts.
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -235,7 +266,7 @@ function ClientProjectCard({ project }: { project: ClientProject }) {
         {/* Deliverables */}
         <div className="mt-4 space-y-1.5 border-t border-border/40 pt-3">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-            Key Deliverables:
+            What was delivered:
           </p>
           <ul className="space-y-1">
             {project.deliverables.map((item) => (
@@ -294,7 +325,7 @@ function ClientProjectCard({ project }: { project: ClientProject }) {
           </div>
         </div>
 
-        {/* Action Button: Live Link Only */}
+        {/* Action Button: Live Website */}
         <a
           href={project.url}
           target="_blank"
@@ -311,8 +342,6 @@ function ClientProjectCard({ project }: { project: ClientProject }) {
 
 /* ─────────────────────────────────────────────────────────────
    LIVE PRODUCT CARD (MAILGENIE & EPOCH CONVERTER)
-   Mandatory: GitHub Link, LinkedIn Post Link, Extension/App Link.
-   Interactive user review modal.
 ───────────────────────────────────────────────────────────── */
 function LiveProductCard({
   product,
@@ -367,52 +396,53 @@ function LiveProductCard({
           ))}
         </ul>
 
-        {/* 3 MANDATORY LINKS: GitHub, LinkedIn Post, Extension Link */}
+        {/* Action Links: Live Demo, Refer code on GitHub, LinkedIn */}
         <div className="mt-6 flex flex-wrap items-center gap-2.5 border-t border-border/50 pt-5">
-          {/* 1. GitHub */}
-          <a
-            href={product.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-secondary px-3.5 py-2 text-xs font-medium transition-colors hover:border-primary/60 hover:text-primary"
-          >
-            <Github size={14} />
-            <span>GitHub</span>
-          </a>
-
-          {/* 2. LinkedIn Post */}
-          <a
-            href={product.linkedinPost}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-secondary px-3.5 py-2 text-xs font-medium text-sky-600 dark:text-sky-400 transition-colors hover:border-sky-500/60"
-          >
-            <Linkedin size={14} />
-            <span>LinkedIn Post</span>
-          </a>
-
-          {/* 3. Extension / Web App */}
+          {/* 1. Live Web App / Extension Demo */}
           <a
             href={product.extensionLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
           >
             <Puzzle size={14} />
             <span>
-              {product.id === "mailgenie" ? "Chrome Extension" : "Open Web App"}
+              {product.id === "mailgenie" ? "Try Extension / Demo" : "Launch Web App"}
             </span>
             <ExternalLink size={12} />
+          </a>
+
+          {/* 2. Refer code or contribute on GitHub */}
+          <a
+            href={product.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/80 px-4 py-2.5 text-xs font-medium text-foreground transition-all hover:border-primary/60 hover:text-primary hover:-translate-y-0.5"
+          >
+            <Github size={14} />
+            <span>Refer code or contribute on GitHub</span>
+            <Star size={12} className="text-amber-400 fill-amber-400/20" />
+          </a>
+
+          {/* 3. LinkedIn Post */}
+          <a
+            href={product.linkedinPost}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-secondary/80 px-3.5 py-2.5 text-xs font-medium text-sky-600 dark:text-sky-400 transition-colors hover:border-sky-500/60"
+          >
+            <Linkedin size={14} />
+            <span>LinkedIn Post</span>
           </a>
         </div>
       </div>
 
-      {/* Reviews & Interactive "Leave a Review" Component */}
+      {/* Reviews & Community Feedback */}
       <div className="mt-6 border-t border-border/60 pt-5">
         <div className="flex items-center justify-between pb-3">
           <div className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
             <Quote size={14} className="text-primary" />
-            User Reviews &amp; Ratings ({product.reviews.length})
+            User Feedback &amp; Ratings ({product.reviews.length})
           </div>
 
           <ReviewSubmissionModal productName={product.name} onSubmitReview={onAddReview} />
@@ -451,7 +481,6 @@ function LiveProductCard({
 
 /* ─────────────────────────────────────────────────────────────
    INTERACTIVE USER REVIEW MODAL DIALOG
-   Allows visitors to submit reviews with instant feedback
 ───────────────────────────────────────────────────────────── */
 function ReviewSubmissionModal({
   productName,
@@ -476,7 +505,7 @@ function ReviewSubmissionModal({
     onSubmitReview({
       id: `rev-${Date.now()}`,
       author: name.trim(),
-      role: role.trim() || "Verified User",
+      role: role.trim() || "Community Reviewer",
       quote: quote.trim(),
       rating,
       date: "Just now",
@@ -497,7 +526,7 @@ function ReviewSubmissionModal({
           className="inline-flex items-center gap-1.5 rounded-xl border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
         >
           <Plus size={13} />
-          Leave a Review
+          Leave Feedback
         </button>
       </DialogTrigger>
 
@@ -533,7 +562,6 @@ function ReviewSubmissionModal({
                   />
                 </button>
               ))}
-              <span className="ml-2 text-xs font-bold text-foreground">{rating}.0 / 5.0</span>
             </div>
           </div>
 
@@ -544,59 +572,52 @@ function ReviewSubmissionModal({
             <input
               id="rev-name"
               required
-              maxLength={60}
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Rahul Sharma"
-              className="w-full rounded-xl border border-input bg-background px-3 py-2 text-xs outline-none focus:border-primary"
+              placeholder="e.g. Alex Morgan"
+              className="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-xs outline-none focus:border-primary"
             />
           </div>
 
           <div>
             <label htmlFor="rev-role" className="block text-xs font-medium mb-1">
-              Your Role / Company (Optional)
+              Role or Company (optional)
             </label>
             <input
               id="rev-role"
-              maxLength={60}
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              placeholder="e.g. Frontend Engineer, Product Manager"
-              className="w-full rounded-xl border border-input bg-background px-3 py-2 text-xs outline-none focus:border-primary"
+              placeholder="e.g. Product Lead / Developer"
+              className="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-xs outline-none focus:border-primary"
             />
           </div>
 
           <div>
             <label htmlFor="rev-quote" className="block text-xs font-medium mb-1">
-              Your Review / Feedback *
+              Your Review / Experience *
             </label>
             <textarea
               id="rev-quote"
               required
               rows={3}
-              maxLength={500}
               value={quote}
               onChange={(e) => setQuote(e.target.value)}
-              placeholder={`How did ${productName} help your workflow?`}
-              className="w-full rounded-xl border border-input bg-background px-3 py-2 text-xs outline-none focus:border-primary"
+              placeholder="What did you think of the app or code?"
+              className="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-xs outline-none focus:border-primary"
             />
           </div>
 
-          <div className="flex items-center justify-between pt-2">
-            {testimonialsConfig.reviewFormUrl && (
-              <a
-                href={testimonialsConfig.reviewFormUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[11px] text-muted-foreground hover:text-primary transition-colors"
-              >
-                Or submit via Google Form ↗
-              </a>
-            )}
-
+          <div className="flex justify-end gap-2 pt-2">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="rounded-xl border border-border px-4 py-2 text-xs font-medium text-muted-foreground hover:text-foreground"
+            >
+              Cancel
+            </button>
             <button
               type="submit"
-              className="ml-auto inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-glow"
             >
               <Send size={12} />
               Submit Review

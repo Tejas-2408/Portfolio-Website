@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Moon, Sun, ExternalLink } from "lucide-react";
+import { Menu, X, Moon, Sun, ExternalLink, Sparkles } from "lucide-react";
 import { navItems, profile, links } from "@/data/portfolio";
 
 export function Navbar() {
@@ -22,8 +22,17 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (href: string) => {
+    setOpen(false);
+    if (href === "#client-work") {
+      window.dispatchEvent(new CustomEvent("tab-select", { detail: "client" }));
+    } else if (href === "#my-builds") {
+      window.dispatchEvent(new CustomEvent("tab-select", { detail: "products" }));
+    }
+  };
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
       {/* Scroll reading progress bar */}
       <div
         className="h-[2.5px] bg-primary transition-all duration-150 ease-out"
@@ -51,18 +60,21 @@ export function Navbar() {
           </div>
         </a>
 
+        {/* Desktop Navigation Links */}
         <div className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-primary"
+              onClick={() => handleNavClick(item.href)}
+              className="rounded-md px-3 py-1.5 text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               {item.label}
             </a>
           ))}
         </div>
 
+        {/* Right Action Buttons */}
         <div className="flex items-center gap-2">
           {links.fiverr && (
             <a
@@ -78,7 +90,7 @@ export function Navbar() {
 
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-1 text-xs font-semibold text-primary-foreground shadow-glow hover:-translate-y-0.5 transition-transform"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-1.5 text-xs font-semibold text-primary-foreground shadow-glow hover:-translate-y-0.5 transition-transform"
           >
             Hire Me
           </a>
@@ -103,21 +115,22 @@ export function Navbar() {
         </div>
       </nav>
 
+      {/* Mobile Menu */}
       {open && (
         <div className="border-t border-border bg-background/95 backdrop-blur-md md:hidden">
-          <div className="mx-auto flex max-w-5xl flex-col px-5 py-3 gap-1">
+          <div className="mx-auto flex max-w-5xl flex-col px-5 py-4 gap-1.5">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-2 py-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+                onClick={() => handleNavClick(item.href)}
+                className="rounded-xl px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-primary"
               >
                 {item.label}
               </a>
             ))}
 
-            <div className="pt-2 mt-2 border-t border-border/60 flex items-center gap-2">
+            <div className="pt-3 mt-2 border-t border-border/60 flex items-center gap-2">
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
